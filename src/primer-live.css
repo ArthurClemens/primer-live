@@ -1,0 +1,10 @@
+/* Remove SelectMenu backdrop */
+.SelectMenu::before {
+  display: none;
+}
+@media (max-width: 544px) {
+  [data-prompt][data-isshowing] [data-backdrop][data-islight] {
+    /* Override: use medium color backdrop for menu that looks like a dialog */
+    opacity: var(--prompt-background-opacity-backdrop-medium);
+  }
+}

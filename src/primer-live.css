@@ -8,3 +8,14 @@
     opacity: var(--prompt-background-opacity-backdrop-medium);
   }
 }
+
+/* Reset `margin-bottom: -1px` which causes a scrollbar. Replace with removal of bottom border. */
+.Box-body:last-of-type {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Remove redundant top spacing of first form group. */
+.Box-body > .form-group:first-child {
+  margin-top: 0;
+}

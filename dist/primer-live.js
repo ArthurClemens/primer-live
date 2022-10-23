@@ -64,26 +64,42 @@ var isVisible = (element) => {
   }
   return !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length);
 };
+var isFocusable = (el, interactiveOnly) => {
+  return el instanceof HTMLAnchorElement && el.rel !== "ignore" || el instanceof HTMLAreaElement && el.href !== void 0 || [
+    HTMLInputElement,
+    HTMLSelectElement,
+    HTMLTextAreaElement,
+    HTMLButtonElement
+  ].some((elClass) => el instanceof elClass) && !el.disabled || el instanceof HTMLIFrameElement || el.tabIndex > 0 || !interactiveOnly && el.tabIndex === 0 && el.getAttribute("tabindex") !== null && el.getAttribute("aria-hidden") !== "true";
+};
+var getFirstFocusable = (content) => {
+  const focusable = [].slice.call(
+    content.querySelectorAll(
+      "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"
+    )
+  ).filter((el) => isFocusable(el, true)).sort((a, b) => a.tabIndex - b.tabIndex);
+  return focusable[0];
+};
 var ROOT_SELECTOR = "[data-prompt]";
 var CONTENT_SELECTOR = "[data-content]";
 var TOUCH_SELECTOR = "[data-touch]";
 var TOGGLE_SELECTOR = "[data-toggle]";
 var IS_MODAL_DATA = "ismodal";
 var IS_ESCAPABLE_DATA = "isescapable";
+var IS_FOCUS_FIRST_DATA = "isfocusfirst";
+var FOCUS_FIRST_SELECTOR_DATA = "focusfirst";
 var IS_OPEN_DATA = "isopen";
 var IS_SHOWING_DATA = "isshowing";
 var IS_HIDING_DATA = "ishiding";
 var IS_LOCKED_DATA = "islocked";
 var LOCK_DURATION = 300;
-var hideView = (_0) => __async(void 0, [_0], function* ({
-  content,
-  root,
-  isDetails,
-  isEscapable,
-  escapeListener
-}) {
+var hideView = (_0, ..._1) => __async(void 0, [_0, ..._1], function* (elements, options = {}) {
+  const { content, root, isDetails } = elements;
   if (root.dataset[IS_LOCKED_DATA] !== void 0) {
     return;
+  }
+  if (options.willHide) {
+    options.willHide(elements);
   }
   delete root.dataset[IS_SHOWING_DATA];
   root.dataset[IS_HIDING_DATA] = "";
@@ -94,16 +110,25 @@ var hideView = (_0) => __async(void 0, [_0], function* ({
   }
   delete root.dataset[IS_HIDING_DATA];
   delete root.dataset[IS_OPEN_DATA];
+  if (options.didHide) {
+    options.didHide(elements);
+  }
 });
-var showView = (_0) => __async(void 0, [_0], function* ({
-  content,
-  root,
-  isDetails,
-  isEscapable,
-  escapeListener
-}) {
+var showView = (_0, ..._1) => __async(void 0, [_0, ..._1], function* (elements, options = {}) {
+  const {
+    content,
+    root,
+    isDetails,
+    isEscapable,
+    isFocusFirst,
+    focusFirstSelector,
+    escapeListener
+  } = elements;
   if (root.dataset[IS_LOCKED_DATA] !== void 0) {
     return;
+  }
+  if (options.willShow) {
+    options.willShow(elements);
   }
   root.dataset[IS_LOCKED_DATA] = "";
   setTimeout(() => {
@@ -122,18 +147,32 @@ var showView = (_0) => __async(void 0, [_0], function* ({
   root.dataset[IS_SHOWING_DATA] = "";
   const duration = getDuration(content);
   yield wait(duration);
+  if (isFocusFirst) {
+    const firstFocusable = getFirstFocusable(content);
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  } else if (focusFirstSelector) {
+    const firstFocusable = content.querySelector(focusFirstSelector);
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  }
+  if (options.didShow) {
+    options.didShow(elements);
+  }
 });
-var toggleView = (_0, ..._1) => __async(void 0, [_0, ..._1], function* (elements, mode = 2) {
+var toggleView = (_0, ..._1) => __async(void 0, [_0, ..._1], function* (elements, mode = 2, options) {
   switch (mode) {
     case 0:
-      return yield showView(elements);
+      return yield showView(elements, options);
     case 1:
-      return yield hideView(elements);
+      return yield hideView(elements, options);
     default: {
       if (isVisible(elements.content)) {
-        return yield hideView(elements);
+        return yield hideView(elements, options);
       } else {
-        return yield showView(elements);
+        return yield showView(elements, options);
       }
     }
   }
@@ -161,11 +200,15 @@ function getElements(promptElement, command) {
   const isDetails = root.tagName === "DETAILS";
   const isModal = root.dataset[IS_MODAL_DATA] !== void 0;
   const isEscapable = root.dataset[IS_ESCAPABLE_DATA] !== void 0;
+  const isFocusFirst = root.dataset[IS_FOCUS_FIRST_DATA] !== void 0;
+  const focusFirstSelector = root.dataset[FOCUS_FIRST_SELECTOR_DATA];
   const elements = {
     root,
     isDetails,
     isModal,
     isEscapable,
+    isFocusFirst,
+    focusFirstSelector,
     toggle,
     content,
     touchLayer,
@@ -209,7 +252,7 @@ var initContentEvents = (elements) => {
     content.dataset.registered = "";
   }
 };
-function init(prompt, command, mode) {
+function init(prompt, command, options, mode) {
   return __async(this, null, function* () {
     const elements = getElements(prompt.el, command);
     if (elements === void 0) {
@@ -221,10 +264,10 @@ function init(prompt, command, mode) {
     const { root, isDetails } = elements;
     const isOpen = isDetails && root.getAttribute("open") !== null;
     if (isOpen && mode !== 1) {
-      showView(elements);
+      showView(elements, options);
     }
     if (mode !== void 0) {
-      yield toggleView(elements, mode);
+      yield toggleView(elements, mode, options);
     }
   });
 }
@@ -232,24 +275,24 @@ var Prompt = {
   mounted() {
     init(this);
   },
-  init(command) {
+  init(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command);
+      yield init(this, command, options);
     });
   },
-  toggle(command) {
+  toggle(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, 2);
+      yield init(this, command, options, 2);
     });
   },
-  show(command) {
+  show(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, 0);
+      yield init(this, command, options, 0);
     });
   },
-  hide(command) {
+  hide(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, 1);
+      yield init(this, command, options, 1);
     });
   }
 };

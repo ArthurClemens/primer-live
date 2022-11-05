@@ -19,3 +19,13 @@
 .Box-body > .form-group:first-child {
   margin-top: 0;
 }
+
+/* Reduce checkbox wrapper margins when in a form group. */
+.form-group-body .form-checkbox {
+  margin: 10px 0;
+}
+
+/* Prevent that checkbox and radio button labels are also colored red when the form group has errored status. */
+.form-group.errored .form-checkbox label {
+  color: inherit;
+}

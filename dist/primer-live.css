@@ -26490,6 +26490,23 @@ a.branch-name .octicon {
   color: var(--color-fg-muted);
   fill: var(--color-fg-muted);
 }
+.form-group.errored label {
+  color: inherit;
+}
+.form-group .form-group-header {
+  margin-bottom: 4px;
+}
+.FormControl-inlineValidation {
+  margin-top: 4px;
+}
+.FormControl-inlineValidation--error {
+  color: var(--color-danger-fg);
+  fill: var(--color-danger-fg);
+}
+.FormControl-inlineValidation--success {
+  color: var(--color-success-fg);
+  fill: var(--color-success-fg);
+}
 /*!
  * @primer/css/core
  * http://primer.style/css

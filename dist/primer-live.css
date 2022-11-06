@@ -26462,7 +26462,7 @@ a.branch-name .octicon {
   text-align: left;
 }
 
-/* src/primer-live.css */
+/* src/primercss-overrides.css */
 .SelectMenu::before {
   display: none;
 }
@@ -26483,6 +26483,12 @@ a.branch-name .octicon {
 }
 .form-group.errored .form-checkbox label {
   color: inherit;
+}
+.UnderlineNav-item > .octicon {
+  display: inline !important;
+  margin-right: 8px;
+  color: var(--color-fg-muted);
+  fill: var(--color-fg-muted);
 }
 /*!
  * @primer/css/core

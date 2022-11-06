@@ -29,3 +29,11 @@
 .form-group.errored .form-checkbox label {
   color: inherit;
 }
+
+/* Add the right octicon styles for underline nav items, to avoid having to add class `UnderlineNav-octicon`. */
+.UnderlineNav-item > .octicon {
+  display: inline !important;
+  margin-right: 8px;
+  color: var(--color-fg-muted);
+  fill: var(--color-fg-muted);
+}

@@ -1,4 +1,4 @@
 import "dialogic-js/dialogic-js.css";
 import "./primercss.scss";
-import "./primer-live.css";
+import "./primercss-overrides";
 export * from "./primer-live";

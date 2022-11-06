@@ -26481,9 +26481,6 @@ a.branch-name .octicon {
 .form-group-body .form-checkbox {
   margin: 10px 0;
 }
-.form-group.errored .form-checkbox label {
-  color: inherit;
-}
 .UnderlineNav-item > .octicon {
   display: inline !important;
   margin-right: 8px;
@@ -26498,6 +26495,12 @@ a.branch-name .octicon {
 }
 .FormControl-inlineValidation {
   margin-top: 4px;
+  display: flex;
+  visibility: hidden;
+}
+.form-group.errored .FormControl-inlineValidation,
+.form-group.successed .FormControl-inlineValidation {
+  visibility: visible;
 }
 .FormControl-inlineValidation--error {
   color: var(--color-danger-fg);

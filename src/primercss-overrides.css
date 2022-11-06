@@ -25,11 +25,6 @@
   margin: 10px 0;
 }
 
-/* Prevent that checkbox and radio button labels are also colored red when the form group has errored status. */
-.form-group.errored .form-checkbox label {
-  color: inherit;
-}
-
 /* Add the right octicon styles for underline nav items, to avoid having to add class `UnderlineNav-octicon`. */
 .UnderlineNav-item > .octicon {
   display: inline !important;
@@ -47,6 +42,12 @@
 }
 .FormControl-inlineValidation {
   margin-top: 4px;
+  display: flex;
+  visibility: hidden;
+}
+.form-group.errored .FormControl-inlineValidation,
+.form-group.successed .FormControl-inlineValidation {
+  visibility: visible;
 }
 .FormControl-inlineValidation--error {
   color: var(--color-danger-fg);

@@ -26516,6 +26516,31 @@ a.branch-name .octicon {
   color: var(--color-success-fg);
   fill: var(--color-success-fg);
 }
+.subnav-search input[type=text],
+.subnav-search input[type=search] {
+  width: 320px;
+  color: var(--color-fg-muted);
+}
+.subnav-search input[type=search] {
+  padding-left: 32px;
+}
+.subnav-search input + .octicon {
+  display: none;
+}
+.subnav-search input[type=search] + .octicon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: block;
+  color: var(--color-fg-muted);
+  text-align: center;
+  pointer-events: none;
+}
+.subnav-search-context + .subnav-search input[type=text],
+.subnav-search-context + .subnav-search input[type=search] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 /*!
  * @primer/css/core
  * http://primer.style/css

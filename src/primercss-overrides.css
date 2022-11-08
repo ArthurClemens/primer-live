@@ -33,6 +33,14 @@
   fill: var(--color-fg-muted);
 }
 
+/* Add the right octicon styles for side nav items, to avoid having to add class `SideNav-icon`. */
+.SideNav-item > .octicon,
+.SideNav-subItem > .octicon {
+  width: 16px;
+  margin-right: 8px;
+  color: var(--color-fg-muted);
+}
+
 /* Form validation styles that conform to https://primer.style/view-components/components/alpha/textfield#with-a-validation-message */
 .form-group.errored label {
   color: inherit;

@@ -26487,6 +26487,12 @@ a.branch-name .octicon {
   color: var(--color-fg-muted);
   fill: var(--color-fg-muted);
 }
+.SideNav-item > .octicon,
+.SideNav-subItem > .octicon {
+  width: 16px;
+  margin-right: 8px;
+  color: var(--color-fg-muted);
+}
 .form-group.errored label {
   color: inherit;
 }

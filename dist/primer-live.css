@@ -26541,6 +26541,11 @@ a.branch-name .octicon {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.Box-header + .Box-row,
+.Box-row + .Box-row {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
 /*!
  * @primer/css/core
  * http://primer.style/css

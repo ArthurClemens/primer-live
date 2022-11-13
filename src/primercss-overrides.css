@@ -93,3 +93,10 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+/* Ensure that successive Box-row siblings don't show rounded top corners. */
+.Box-header + .Box-row,
+.Box-row + .Box-row {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}

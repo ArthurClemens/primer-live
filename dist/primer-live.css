@@ -26493,6 +26493,10 @@ a.branch-name .octicon {
   margin-right: 8px;
   color: var(--color-fg-muted);
 }
+.form-control:not(:focus)[invalid],
+.form-select:not(:focus)[invalid] {
+  border-color: var(--color-danger-emphasis);
+}
 .form-group.errored label {
   color: inherit;
 }
@@ -26502,11 +26506,6 @@ a.branch-name .octicon {
 .FormControl-inlineValidation {
   margin-top: 4px;
   display: flex;
-  visibility: hidden;
-}
-.form-group.errored .FormControl-inlineValidation,
-.form-group.successed .FormControl-inlineValidation {
-  visibility: visible;
 }
 .FormControl-inlineValidation--error {
   color: var(--color-danger-fg);

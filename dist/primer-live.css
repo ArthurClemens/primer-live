@@ -26545,6 +26545,12 @@ a.branch-name .octicon {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
+.ActionList-item:not(.ActionList-item--navActive)[aria-selected=true]:not(:hover) {
+  background: none;
+}
+.ActionList-item:not(.ActionList-item--navActive)[aria-selected=true]::after {
+  display: none;
+}
 /*!
  * @primer/css/core
  * http://primer.style/css

@@ -131,3 +131,25 @@
 .ActionList-item:not(.ActionList-item--navActive)[aria-selected="true"]::after {
   display: none;
 }
+
+/* Add space to label following an octicon. */
+.ActionList-item-label>.octicon+span {
+  margin-left: 8px;
+}
+
+/* Mimic Primer/React's ActionMenu overlay style. */
+.ActionMenu-modal {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  overflow: hidden;
+  pointer-events: auto;
+  flex-direction: column;
+  background-color: var(--color-canvas-overlay);
+  border-radius: 12px;
+  box-shadow: var(--color-overlay-shadow);
+  min-width: 192px;
+  max-width: 640px;
+  border: none;
+  margin: 8px 0 16px 0;
+}

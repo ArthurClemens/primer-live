@@ -26589,6 +26589,20 @@ a.branch-name .octicon {
 .ActionList-item-label > .octicon + span {
   margin-left: 8px;
 }
+.ActionMenu {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  padding: 0;
+}
+@media (pointer: coarse) {
+  .ActionList-content {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
 .ActionMenu-modal {
   position: relative;
   z-index: 99;

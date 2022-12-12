@@ -137,6 +137,24 @@
   margin-left: 8px;
 }
 
+/* For ActionMenu, take SelectMenu non-mobile style for all screen sizes. */
+.ActionMenu {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  padding: 0;
+}
+
+/* Reset extra padding for touch devices because lots of layouts break because of it. */
+@media (pointer: coarse) {
+  .ActionList-content {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
 /* Mimic Primer/React's ActionMenu overlay style. */
 .ActionMenu-modal {
   position: relative;

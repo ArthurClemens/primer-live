@@ -171,3 +171,13 @@
   border: none;
   margin: 8px 0 16px 0;
 }
+
+/* Header: make whitespace work on both sides. */
+.Header {
+  column-gap: 16px;
+}
+
+.Header-item {
+  margin-left: 0;
+  margin-right: 0;
+}

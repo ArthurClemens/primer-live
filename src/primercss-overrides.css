@@ -181,3 +181,16 @@
   margin-left: 0;
   margin-right: 0;
 }
+
+/* Implement Primer React's IconButton. */
+.btn-icon {
+  padding: 5px 8px;
+}
+
+.btn-icon.btn-sm {
+  padding: 3px 6px;
+}
+
+.btn-icon.btn-large {
+  padding: 9px 12px;
+}

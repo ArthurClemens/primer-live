@@ -65,12 +65,6 @@
 
 .FormControl-inlineValidation {
   margin-top: 4px;
-  display: flex;
-}
-
-.FormControl-inlineValidation--error {
-  color: var(--color-danger-fg);
-  fill: var(--color-danger-fg);
 }
 
 .FormControl-inlineValidation--success {

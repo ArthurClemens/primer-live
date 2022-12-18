@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@primer/css": "20.8.0",
-    "dialogic-js": "0.2.8"
+    "dialogic-js": "0.3.0"
   },
   "devDependencies": {
     "esbuild": "^0.16.0",

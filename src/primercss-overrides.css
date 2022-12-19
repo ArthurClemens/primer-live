@@ -188,3 +188,11 @@
 .btn-icon.btn-large {
   padding: 9px 12px;
 }
+
+:root {
+  --prompt-max-height-content: 80vh;
+}
+
+[data-prompt] [data-content]:not([aria-role="menu"]) {
+  max-height: var(--prompt-max-height-content);
+}

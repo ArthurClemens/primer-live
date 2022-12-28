@@ -3,13 +3,6 @@
   display: none;
 }
 
-@media (max-width: 544px) {
-  [data-prompt][data-isshowing] [data-backdrop][data-islight] {
-    /* Override: use medium color backdrop for menu that looks like a dialog */
-    opacity: var(--prompt-background-opacity-backdrop-medium);
-  }
-}
-
 /* Reset `margin-bottom: -1px` which causes a scrollbar. Replace with removal of bottom border. */
 .Box-body:last-of-type {
   margin-bottom: 0;
@@ -207,10 +200,19 @@ span.ActionList-content[aria-expanded] {
   max-height: var(--prompt-max-height-content);
 }
 
-[data-prompt][data-isdrawer] [data-drawer-content].Box--overlay {
-  width: inherit;
+/* Box--overlay: reduce width on small screens */
+@media (max-width: 480px) {
+  .Box--overlay {
+    max-width: 90vw;
+  }
 }
 
+/* Box--overlay: drawer width */
+[data-prompt][data-isdrawer] [data-drawer-content].Box--overlay {
+  width: initial;
+}
+
+/* Box--overlay: prevent shadow for push drawer when not showing. */
 [data-prompt][data-isdrawer]:not([data-isshowing]) [data-drawer-content].Box--overlay {
   box-shadow: none;
 }

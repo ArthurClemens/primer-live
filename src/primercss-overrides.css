@@ -216,3 +216,15 @@ span.ActionList-content[aria-expanded] {
 [data-prompt][data-isdrawer]:not([data-isshowing]) [data-drawer-content].Box--overlay {
   box-shadow: none;
 }
+
+/* Small tabnav-tab items */
+.tabnav-tab--small {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+@media (min-width: 544px) {
+  .tabnav-tab--small {
+    padding: 4px 16px;
+  }
+}

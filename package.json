@@ -1,6 +1,6 @@
 {
   "name": "primer-live",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "JavaScript and CSS for primer_live",
   "types": "dist",
   "files": [
@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "@primer/css": "20.8.0",
-    "dialogic-js": "0.4.0"
+    "dialogic-js": "0.4.1"
   },
   "devDependencies": {
     "esbuild": "^0.16.12",
-    "esbuild-sass-plugin": "^2.4.4",
+    "esbuild-sass-plugin": "^2.4.5",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4"
   },

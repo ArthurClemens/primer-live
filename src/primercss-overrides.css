@@ -1,6 +1,11 @@
-/* Remove SelectMenu backdrop */
+/* Remove SelectMenu backdrop. */
 .SelectMenu::before {
   display: none;
+}
+
+/* Remove SelectMenu animation (conflicts with appear transition). */
+.SelectMenu-modal {
+  animation: none;
 }
 
 /* Reset `margin-bottom: -1px` which causes a scrollbar. Replace with removal of bottom border. */

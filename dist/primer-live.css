@@ -26590,6 +26590,9 @@ a.branch-name .octicon {
 .SelectMenu::before {
   display: none;
 }
+.SelectMenu-modal {
+  animation: none;
+}
 .Box-body:last-of-type {
   margin-bottom: 0;
   border-bottom: 0;

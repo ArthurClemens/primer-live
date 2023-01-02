@@ -26757,6 +26757,9 @@ span.ActionList-content[aria-expanded] {
     padding: 4px 16px;
   }
 }
+span[data-color-mode] {
+  background: none;
+}
 /*!
  * @primer/css/core
  * http://primer.style/css

@@ -233,3 +233,8 @@ span.ActionList-content[aria-expanded] {
     padding: 4px 16px;
   }
 }
+
+/* Theming: prevent setting a background on inline elements. */
+span[data-color-mode] {
+  background: none;
+}

@@ -70,6 +70,27 @@
   fill: var(--color-success-fg);
 }
 
+/* Reset error state to initial if element has class phx-no-feedback. */
+.FormControl-inlineValidation.phx-no-feedback {
+  display: none;
+}
+
+.FormControl-input[invalid]:not(:focus).phx-no-feedback,
+.FormControl-select[invalid]:not(:focus).phx-no-feedback,
+.FormControl-textarea[invalid]:not(:focus).phx-no-feedback {
+  border-color: var(--color-border-default);
+}
+
+input.FormControl-checkbox[type=checkbox][invalid]:not(:focus).phx-no-feedback,
+input.FormControl-radio[type=radio][invalid]:not(:focus).phx-no-feedback {
+  border-color: var(--color-border-default);
+}
+
+.form-control:not(:focus)[invalid].phx-no-feedback,
+.form-select:not(:focus)[invalid].phx-no-feedback {
+  border-color: var(--color-border-default);
+}
+
 /* Add the right styles for search input inside subnav, to avoid having to add class `subnav-search-input`. */
 /* input[type="search"] will display a search icon (when .octicon SVG exists). */
 .subnav-search input[type="text"],

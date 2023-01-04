@@ -380,6 +380,20 @@ var Prompt = {
   }
 };
 window.Prompt = Prompt;
+
+// src/primer-live.ts
+var ThemeMenu = {
+  mounted() {
+    window.addEventListener(
+      "phx:theme",
+      (e) => fetch(`/api/session?theme=${JSON.stringify(e.detail)}`, {
+        method: "post"
+      })
+    );
+  }
+};
+window.ThemeMenu = ThemeMenu;
 export {
-  Prompt
+  Prompt,
+  ThemeMenu
 };

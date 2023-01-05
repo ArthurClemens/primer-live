@@ -26640,17 +26640,21 @@ a.branch-name .octicon {
 .FormControl-inlineValidation.phx-no-feedback {
   display: none;
 }
-.FormControl-input[invalid]:not(:focus).phx-no-feedback,
-.FormControl-select[invalid]:not(:focus).phx-no-feedback,
-.FormControl-textarea[invalid]:not(:focus).phx-no-feedback {
+.pl-invalid.phx-no-feedback + .FormControl-input[invalid]:not(:focus),
+.pl-invalid.phx-no-feedback + .FormControl-select[invalid]:not(:focus),
+.pl-invalid.phx-no-feedback + .FormControl-textarea[invalid]:not(:focus) {
   border-color: var(--color-border-default);
 }
-input.FormControl-checkbox[type=checkbox][invalid]:not(:focus).phx-no-feedback,
-input.FormControl-radio[type=radio][invalid]:not(:focus).phx-no-feedback {
+.pl-invalid.phx-no-feedback + input.FormControl-checkbox[type=checkbox][invalid]:not(:focus),
+.pl-invalid.phx-no-feedback + input.FormControl-radio[type=radio][invalid]:not(:focus) {
   border-color: var(--color-border-default);
 }
-.form-control:not(:focus)[invalid].phx-no-feedback,
-.form-select:not(:focus)[invalid].phx-no-feedback {
+.pl-invalid.phx-no-feedback + .form-control:not(:focus)[invalid],
+.pl-invalid.phx-no-feedback + .form-select:not(:focus)[invalid] {
+  border-color: var(--color-border-default);
+}
+.pl-valid + .form-control:not(:focus)[invalid],
+.pl-valid + .form-select:not(:focus)[invalid] {
   border-color: var(--color-border-default);
 }
 .subnav-search input[type=text],

@@ -347,17 +347,35 @@ var Prompt = {
   },
   toggle(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, options, 2);
+      yield init(
+        this,
+        command,
+        options,
+        2
+        /* TOGGLE */
+      );
     });
   },
   show(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, options, 0);
+      yield init(
+        this,
+        command,
+        options,
+        0
+        /* SHOW */
+      );
     });
   },
   hide(command, options) {
     return __async(this, null, function* () {
-      yield init(this, command, options, 1);
+      yield init(
+        this,
+        command,
+        options,
+        1
+        /* HIDE */
+      );
     });
   }
 };

@@ -380,6 +380,20 @@ var Prompt = {
   }
 };
 window.Prompt = Prompt;
+
+// src/session.ts
+var Session = {
+  mounted() {
+    window.addEventListener(
+      "phx:pl-session",
+      (e) => fetch(`/api/pl-session?payload=${JSON.stringify(e.detail)}`, {
+        method: "post"
+      })
+    );
+  }
+};
+window.Session = Session;
 export {
-  Prompt
+  Prompt,
+  Session
 };

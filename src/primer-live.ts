@@ -1,1 +1,2 @@
-export * from "dialogic-js";
+export * from 'dialogic-js';
+export * from './session';

@@ -1,6 +1,6 @@
 {
   "name": "primer-live",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "JavaScript and CSS for primer_live",
   "types": "dist",
   "files": [

@@ -26587,6 +26587,16 @@ a.branch-name .octicon {
 }
 
 /* src/primercss-overrides.css */
+[data-color-mode=dark] [data-prompt] {
+  --prompt-background-opacity-backdrop-dark: 0.7;
+  --prompt-background-opacity-backdrop-medium: 0.5;
+  --prompt-background-opacity-backdrop-light: 0.3;
+}
+[data-color-mode=dark][data-dark-theme=dark_dimmed] [data-prompt] {
+  --prompt-background-opacity-backdrop-dark: 0.5;
+  --prompt-background-opacity-backdrop-medium: 0.35;
+  --prompt-background-opacity-backdrop-light: 0.2;
+}
 .SelectMenu::before {
   display: none;
 }

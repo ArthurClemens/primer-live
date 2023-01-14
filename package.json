@@ -30,7 +30,7 @@
     "dialogic-js": "0.4.3"
   },
   "devDependencies": {
-    "esbuild": "^0.16.14",
+    "esbuild": "^0.17.0",
     "esbuild-sass-plugin": "^2.4.5",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4"
